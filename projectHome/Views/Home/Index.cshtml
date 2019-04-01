@@ -1,0 +1,172 @@
+﻿@model List<string>
+@using mor1.Models
+@{
+    ViewData["Title"] = "Home Page";
+    var homeslidesUrl = commonName.homeSlideFilePathUrl;
+    var modelCount = Model.Count();
+    //loop through model and add homeslidesUrl to each model name
+    for (byte i =0; i<modelCount; i++)
+    {
+        Model[i] = homeslidesUrl + Model[i];
+    }
+}
+
+<link rel="stylesheet" href="~/css/homepage.css">
+
+
+
+<!--============== Swiper slider ================ -->
+<!-- Slider main container -->
+<div class="swiper-container main-slider" id="myCarousel">
+    <div class="swiper-wrapper">
+
+        <!--load video if weekend-->
+        @if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+        {
+            <div class="swiper-slide slider-bg-position" style="background-color: black;" data-hash="slide1">
+                <!-- add muted if Chrome/Safari can't play -->
+                <video class="slider-video" preload="auto" loop autoplay muted controls
+                       style="visibility: visible; width: 100%; height: 100%;">
+                    <source src="~/videos/Eric.mp4" type="video/mp4">
+                    <source src="~/videos/Eric.ogg" type="video/ogg">
+                </video>
+            </div>
+
+        }
+        else
+        {
+            <div class="swiper-slide slider-bg-position" style="background: url('@Model[0]');"
+                 data-hash="slide1">
+                <div class="slideBox mySlide1">
+                    <div class="card">
+                        <div id="slideTitle">Build Your Dream Home With Us</div>
+                        <p><a href="#" class="btn myBtnOrange btn-lg">DISCOVER NOW!</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-slide slider-bg-position" style="background: url('@Model[1]'); background-position: center center !important;"
+                 data-hash="slide2">
+                <div class="slideBox mySlide2" style="background-color: transparent;">
+                    <div class="card">
+                        <div id="slideTitle2">Singapore's No.1 Online Portal For Renovation Services</div>
+                        <p><a href="#" class="btn myBtnOrange btn-lg">LEARN MORE</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider-bg-position" style="background-image: url('@Model[2]');"
+                 data-hash="slide3">
+                <div class="slideBox mySlide3" style="background-color: rgba(0, 0, 0, 0.3);">
+                    <div class="card">
+                        <div id="slideTitle3">The Right Choice For You and Your Family</div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+    <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+</div>
+
+
+
+<!--======== about section ==============-->
+<div class="" id="aboutSec">
+    <div class="container">
+        <div id="aboutSecTitle">
+            <div>Looking to renovate, but don't know where to go to?</div>
+            <div>You are in the right place.</div>
+            <div>With 3 simple steps, we show you the door to the best contractors in town.</div>
+        </div>
+        <div class="card-deck" id="servStepsWrapper">
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10102;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Select the type of services</div>
+                </div>
+            </div>
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10103;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Fill in your home particulars</div>
+                </div>
+            </div>
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10104;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Submit</div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a asp-controller="ReqQuotation" asp-action="Index" class="btn btn-lg myBtnOrange trans_300">GET YOUR FREE QUOTES NOW!</a>
+        </div>
+    </div>
+</div>
+
+<!--============= cards  ======================================= -->
+<div class="" id="servSec">
+    <div class="row">
+        <div class="servSecImgWrapper col-md-6">
+            <div class="servSecImg" style="background-image: url('/images/architect.jpeg');"></div>
+        </div>
+        <div class="col-md-6" id="servSecDescWrapper">
+            <div id="servSecTitle">
+                <div>SERVICES FOR YOU</div>
+            </div>
+            <div class="row servCatSec">
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div>Professional Services</div>
+                </div>
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>Renovation Contractor</div>
+                </div>
+            </div>
+            <div class="row servCatSec">
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <div>Supplier</div>
+                </div>
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>Renovation Contractor</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/js/homepage.js"></script>
+}

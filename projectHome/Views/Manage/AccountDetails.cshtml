@@ -1,0 +1,45 @@
+﻿@model mor1.Models.IdentityEntities.CustomUser
+@{
+    ViewData["Title"] = "AccountDetails";
+}
+
+<style>
+    label{
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <h2>Your Account Details</h2>
+    <div class="card" style="margin-bottom: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="Email"></label>
+                </div>
+                <div class="col-md-8">
+                    <div>@Model.Email</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="UserName"></label>
+                </div>
+                <div class="col-md-8">
+                    <div>@Model.UserName</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="Address"></label>
+                </div>
+                <div class="col-md-8">
+                    <div>@Model.Address</div>
+                </div>
+            </div>
+            <div>
+                <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change Password</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,274 @@
+﻿
+.myBodyContent{
+    margin-top: 8%;
+}
+
+.card {
+    border-radius: 0px;
+}
+
+#wallPhotoWrapper{
+    height: 60vh;
+    position: relative;
+    margin-bottom: 30px;
+    margin-top:0px;
+}
+#wallPhoto {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+#compLogoWrapper{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /*border: solid 1px;*/
+    background-color: white;
+    padding: 3px;
+    bottom: 0;
+}
+#compLogo {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+#compDescWrapper{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#servProvided .servList {
+    padding: 0px;
+}
+
+    #servProvided .servList li {
+        list-style: none;
+    }
+
+        #servProvided .servList li:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f058 \00a0";
+            color: red;
+        }
+
+/*#photoDispWrapper{
+    background-color: transparent;
+}
+    #photoDispWrapper .imgDiv {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        flex-basis: 50%;
+    }
+        #photoDispWrapper .imgDiv img {
+            height: 200px;
+            width: 200px;
+        }
+    #photoDispWrapper .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+        justify-content: space-around;
+        align-items: center;
+        width: 700px;
+        border: solid 1px;
+    }*/
+
+#photoDispWrapper{
+    background-color: black;
+}
+    #photoDispWrapper #photoDispTitle{
+        color: white;
+        font-weight: bold;
+    }
+
+    #photoDispWrapper .slider {
+        width: 90%;
+        margin: 20px auto;
+        color: red;
+        display: flex;
+        justify-content: space-around;
+        /*border: solid 1px;*/
+    }
+        #photoDispWrapper .slider .slide{
+            margin-left: 10px;
+            margin-right: 10px;
+            /*width: 200px;*/
+            /*border: solid 1px;*/
+        }
+
+            #photoDispWrapper .slider .slide img {
+                display: block;
+                margin: auto;
+                width: 100%;
+                height: 150px;
+            }
+
+
+.slick-dots li button {
+    /*background: url(path/to/your-image.png);*/
+    /*font-size: 30px;*/
+    overflow: hidden;
+    /*color: white;
+    background-color: yellow;*/
+}
+    .slick-dots li button::before {
+        color: white;
+        font-size: 40px;
+        opacity: 0.7;
+    }
+.slick-dots li.slick-active button::before{
+    color: dodgerblue;
+    opacity: 1;
+}
+.slick-prev,
+.slick-next{
+    
+}
+    .slick-prev:before, .slick-next:before{
+        color: gray;
+    }
+    .slick-prev::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f053";
+        font-weight: 900;
+        font-size: 30px;
+        color: white;
+    }
+    .slick-next::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f054";
+        font-weight: 900;
+        font-size: 30px;
+        color: white;
+    }
+
+.cursor {
+    cursor: pointer;
+}
+
+img.hover-shadow {
+    transition: 0.3s;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/*=========== custom Image Modal ===================*/
+/* The Modal (background) */
+.modal {
+    padding-right: 0px !important;
+}
+
+.modal-dialog {
+    position: fixed;
+    width: 100%;
+    margin: 0;
+}
+.modal-backdrop {
+    background-color: black !important;
+    opacity: 0.9 !important;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: transparent;
+    /*position: relative;*/
+    left: 2vw;
+    margin: auto;
+    width: 95vw;
+}
+#imgModal{
+    
+}
+#imgModal .close{
+
+}
+    #imgModal .modalSlider {
+        /*width: 90%;*/
+        /*margin: 20px auto;*/
+        /*color: red;*/
+        /*display: flex;
+        justify-content: space-around;*/
+    }
+
+        #imgModal .modalSlider .modalSlide {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+            #imgModal .modalSlider .modalSlide img {
+                display: block;
+                margin: auto;
+                /*width: 100%;*/
+                height: 85vh;
+                border: solid 1px dodgerblue;
+                overflow:hidden;
+            }
+
+/*=========== star rating ====================*/
+.rating {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    color: #ddd;
+    font-size: 20px;
+}
+
+    .rating input {
+        display: none;
+    }
+
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked + label,
+        .rating input:checked + label ~ label {
+            color: #ffc107;
+        }
+
+
+/*============== tabs =================*/
+.nav-tabs .nav-item .nav-link{
+    color: black;
+    font-weight: bold;
+    border: solid 0.5px gray;
+}
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+
+/*========= comment ratings display ===============*/
+.ratingsDisp {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: lightgray;
+    overflow: hidden;
+}
+
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: gold;
+}
+
+    .empty-stars:before, .full-stars:before {
+        content: "\2605\2605\2605\2605\2605";
+        font-size: 14pt;
+    }
+
+/*.empty-stars:before {
+    -webkit-text-stroke: 1px #848484;
+}
+
+.full-stars:before {
+    -webkit-text-stroke: 1px orange;
+}*/

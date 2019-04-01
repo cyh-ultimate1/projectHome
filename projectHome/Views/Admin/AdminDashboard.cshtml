@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "AdminDashboard";
+}
+
+<style>
+    .one{
+        margin-bottom: 10px;
+    }
+    .one a{
+        width: 500px;
+        height: 50px;
+    }
+</style>
+
+<h2>Admin Dashboard</h2>
+
+<div class="container">
+    <div class="col-md-12 one">
+        <a asp-controller="Admin" asp-action="AddHomeSlides" class="btn btn-info">Add Home Slides</a>
+    </div>
+    <div class="col-md-12 one">
+        <a asp-controller="Admin" asp-action="EditHomeSlides" class="btn btn-warning">Edit Home Slides</a>
+    </div>
+</div>

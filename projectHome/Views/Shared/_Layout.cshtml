@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - mor1</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/lib/swiper-4.4.1/css/swiper.min.css">
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
+        <link rel="stylesheet" href="~/css/common.css" />
+        <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <partial name="_Navbar" />
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="topNavBuffer" style="margin-bottom: 12vh;">
+
+    </div>
+        
+    <!--=== below is to disable container for homepage to facilitate slider full width. And also for having top margin ===-->
+    @{
+        var cont = "myBodyContent";
+    }
+    @if (ViewData["Title"].ToString().Equals("Home Page"))
+    {
+        cont = "myHomeBodyContent";
+    }
+    <!--===================================================================================-->
+
+            <div class="@cont body-content">
+                @RenderBody()
+                @*<hr />*@
+                <footer>
+                    <p>
+                        &copy;
+                        <script type="text/javascript">document.write(new Date().getFullYear());</script> - Project Home
+                    </p>
+                </footer>
+            </div>
+
+            <environment include="Development">
+                <script src="~/lib/jquery/dist/jquery.js"></script>
+                <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+                <!-- Popper JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+                <script src="~/lib/swiper-4.4.1/js/swiper.min.js"></script>
+                @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+                <script src="~/js/common.js" asp-append-version="true"></script>
+                <script src="~/lib/slick-1.8.1/slick.min.js"></script>
+                @*<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>*@
+            </environment>
+            <environment exclude="Development">
+                <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                        asp-fallback-test="window.jQuery"
+                        crossorigin="anonymous"
+                        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+                </script>
+                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js"
+                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                        crossorigin="anonymous"
+                        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+                </script>
+                <script src="~/js/site.min.js" asp-append-version="true"></script>
+            </environment>
+
+            @RenderSection("Scripts", required: false)
+    </body>
+</html>

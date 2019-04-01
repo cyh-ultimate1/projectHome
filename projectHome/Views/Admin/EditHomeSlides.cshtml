@@ -1,0 +1,97 @@
+﻿@model IEnumerable<mor1.Models.AdminModels.HomeSlide>
+@using mor1.Models
+@{
+    ViewData["Title"] = "EditHomeSlides";
+    byte tempIdx = 0;
+    string tempListItem = "";
+}
+
+<style>
+    .bgImg {
+        height: 200px;
+        background-position: center center !important;
+        background-repeat: no-repeat;
+    }
+    .list-item{
+        background-color: black !important;
+        background-image: none;
+    }
+    .list-item-highlight {
+        border: 3px solid red;
+    }
+</style>
+
+<h2>Drag and drop slides arrangement to display. Only first three slides will be shown.</h2>
+
+<div class="card" style="background-color: inherit;">
+    <div class="container">
+        <ul id="sortable">
+            @foreach (var item in Model)
+            {
+                tempIdx++;
+                @if (tempIdx < 4)
+                {
+                    tempListItem = "list-item-highlight";
+                }else{
+                    tempListItem = "";
+                }
+                    <li class="ui-state-default list-item @tempListItem" id="@item.ID"><div class="bgImg" style="background-image: url('@commonName.homeSlideFilePathUrl@item.Filename'); background-size: contain;"></div></li>
+
+            }
+        </ul>
+        <button class="btn btn-warning" id="saveBtn">Save Order</button>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var idList = [];
+        var listItem = $(".list-item");
+
+        $(function () {
+            $("#sortable").sortable({
+                placeholder: "ui-state-highlight",
+                update: function (event, ui) {
+                    //listItem.css("border", "2px solid yellow");
+                    listItem.removeClass("list-item-highlight");
+                    $(".list-item").each(function (idx, obj) {
+                        if (idx === 3) {
+                            return false;
+                        } else {
+                            $(this).addClass("list-item-highlight");
+                        }
+                    });
+                },
+                change: function (event, ui) {
+                    //alert("order changed");
+                }
+            });
+            $("#sortable").disableSelection();
+
+            $("#saveBtn").click(function () {
+                $(".list-item").each(function (idx, obj) {
+                    //alert($(obj).attr("id"));
+                    idList.push($(obj).attr("id"));
+                });
+
+                $.ajax({
+                    url: "UpdateHomeSlideOrder",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8;",
+                    //datatype is what type Jquery ajax call expects in return.
+                    dataType: "json",
+                    data: JSON.stringify({
+                        IdList: idList
+                    }),
+                    headers: {
+                        RequestVerificationToken:
+                            $('input:hidden[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (respData) {
+                        window.location = "@Url.Action("Index", "Home")";
+                    }
+                });
+            });
+        });
+    </script>
+}

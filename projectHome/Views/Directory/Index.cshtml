@@ -1,0 +1,53 @@
+﻿@using mor1.Models
+@model IEnumerable<mor1.ViewModels.DirectoryVM>
+@{
+    ViewData["Title"] = "Index";
+    var idx = 0;
+}
+
+<link rel="stylesheet" href="~/css/directory.css">
+
+<div class="container">
+    <div id="pageTitle">
+        <div>Directory</div>
+    </div>
+    <div id="paginationSec">
+        <ul class="pagination d-flex">
+            <li class="page-item"><a class="page-link" href="#" data-pageId="prev">Previous</a></li>
+            @foreach (var letter in commonName.alphabetStr)
+            {
+                if (letter == 'A')
+                {
+                    <li class="page-item active"><a class="page-link" href="#" data-pageId="@idx">@letter</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="#" data-pageId="@idx">@letter</a></li>
+                }
+
+                idx++;
+            }
+            <li class="page-item"><a class="page-link" href="#" data-pageId="next">Next</a></li>
+        </ul>
+    </div>
+    <div class="d-flex" id="dirWrapper">
+        @*@foreach (var company in Model)
+        {
+            <div class="card myBoxShadow trans_300">
+                <a href="#" data-companyId="@company.ID">
+                    <div class="compLogo" style="background-image: url('/images/woman.jpg')"></div>
+                    <div class="myCardText">@company.CompanyName</div>
+                </a>
+            </div>
+
+        }*@
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+@section scripts{
+    <script src="~/js/directory.js"></script>
+
+}

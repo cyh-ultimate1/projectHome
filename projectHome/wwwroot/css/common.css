@@ -1,0 +1,228 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+:root {
+    --myOrange: #ff6905;
+    --myMaroon: #ec4141;
+}
+
+body {
+    font-family: 'Raleway','Open Sans', 'Lato', sans-serif;
+    /*background-color: #eaebf0;*/
+    background-color: #6ee1e2;
+    /*background-color: lightskyblue;*/
+    /*background-color: #00a3f2;*/
+    /*background-color: #8fc0a3;*/
+}
+
+/*.super_container {
+    width: 100%;
+    overflow: hidden;
+}*/
+.myHomeBodyContent{
+    margin-top: 100px;
+}
+.myBodyContent {
+    margin-top: 120px;
+}
+
+.trans_300 {
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.trans_500 {
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+.trans_1000 {
+    -webkit-transition: all 1000ms ease;
+    -moz-transition: all 1000ms ease;
+    -ms-transition: all 1000ms ease;
+    -o-transition: all 1000ms ease;
+    transition: all 1000ms ease;
+}
+
+.myBoxShadow {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px; /* Firefox 3.5 - 3.6 */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+/*=================== header and navbar stuffs ===============*/
+.navbar-brand img{
+    height: 60px;
+}
+#navbar1 {
+    font-size: 11px;
+}
+
+    #navbar1 .withBtn {
+        background-color: red;
+        border-radius: 5px;
+        min-width: 100px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+        padding: 1px 5px;
+    }
+
+        #navbar1 .withBtn a {
+            text-transform: uppercase;
+        }
+
+        #navbar1 .withBtn .nav-link {
+            color: white;
+        }
+
+#navbar2 {
+    padding-bottom: 5px !important;
+    font-size: 13px;
+}
+
+    #navbar2 .nav-link {
+        color: black !important;
+        margin-right: 10px;
+        padding: 2px 4px;
+    }
+
+    #navbar2 .nav-item {
+        border-left: solid var(--myMaroon) 3px;
+        min-width: 150px;
+        /*padding-right: 20px;*/
+        /*padding-left: 3px !important;*/
+    }
+
+    #navbar2 .nav-link {
+        /*margin-left: 5px;
+        padding: 2px 4px;*/
+    }
+
+    /*ul, li{
+        border: solid 1px black;
+    }*/
+    #navbar2 .nav-item:hover {
+        background-color: var(--myMaroon);
+    }
+
+#navbar2 .nav-item:hover .nav-link {
+    color: white !important;
+}
+.navTop {
+    border-bottom: solid 1px;
+    border-bottom-color: gray;
+    font-weight: bold;
+}
+/****** social icons *******/
+#navbar1 .socialIcons {
+    margin-bottom: 10px;
+}
+
+    #navbar1 .socialIcons .fab {
+        /*background-color: #767676;*/
+        background-color: none;
+        /*color: white;*/
+        /*border-radius: 7px;*/
+        /*padding: 5px;*/
+        font-size: 25px;
+        width: 1.5em;
+        text-align: center;
+    }
+
+    #navbar1 .socialIcons a {
+        margin-right: 10px;
+    }
+
+/*** nav tooltip ***/
+/* .tooltip > .tooltip-inner {
+	background-color: #73AD21 !important; 
+	color: #FFFFFF; 
+	border: 1px solid green; 
+	padding: 15px;
+	font-size: 20px;
+} */
+/* Tooltip on top */
+/* .tooltip.auto > .tooltip-arrow {
+	border-top: 5px solid green;
+} */
+
+
+/* hamburger */
+.hamburger {
+    display: none;
+    margin-left: 30px;
+    cursor: pointer;
+    margin-right: 4px;
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+    transform: translateY(2px);
+}
+
+    .hamburger i {
+        font-size: 18px;
+        color: #1b1b1b;
+    }
+
+
+
+
+
+/** this css to prevent white space above footer **/
+.aboutSec {
+    margin-bottom: 0;
+}
+
+footer {
+    background-color: dimgray;
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* bottom: 0; */
+    width: 100%;
+    color: white;
+    height: 100px;
+    margin: 0;
+    padding: 20px 10px;
+}
+
+.transparentBtn {
+    text-transform: uppercase;
+    border-radius: 10px;
+    border-color: #FF8C00;
+    background-color: transparent;
+    border-width: 3px;
+    color: #FF8C00;
+    text-align: center;
+}
+
+.transparentBtn-green {
+    border-color: green;
+    color: green;
+}
+
+.transparentBtn:hover {
+    background-color: #FF8C00;
+    color: white;
+}
+
+.transparentBtn-green:hover {
+    background-color: green;
+    color: white;
+}
+
+
+.myBtnOutline{
+    border-width: 2px !important; 
+}
+
+.myAsterisk{
+    color: red;
+    font-weight: bold;
+}
