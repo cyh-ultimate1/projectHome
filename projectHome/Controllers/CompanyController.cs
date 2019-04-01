@@ -45,19 +45,18 @@ namespace mor1.Controllers
         [HttpPost]
         public async Task<IActionResult> SearchCompanies([FromBody]JObject reqData)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
             try
             {
+                //get ajax reqData properties
                 var servCat = JsonConvert.DeserializeObject<int[]>(reqData["servCatIn"].ToString());
                 var serv = JsonConvert.DeserializeObject<int[]>(reqData["servIn"].ToString());
                 int page = reqData["subseqPageIdxIn"].Value<int>();
                 string sortOption = reqData["sortOptionIn"].Value<string>();
 
+                //get results from DB based search input
                 var results2 = await _companyRepo.GetSearchResults(reqData["searchIn"].ToString(), servCat, serv);
                 
+                //re-order results based on sort option
                 if(sortOption == "rating")
                 {
                     results2 = results2.OrderByDescending(b => b.OverallRating);
@@ -69,17 +68,10 @@ namespace mor1.Controllers
                     results2 = results2.OrderByDescending(b => b.CompanyName);
                 }
 
+                //create paginated list. 3rd argument is page size
                 var results = await PaginatedList<Company>.CreateAsync(results2, page==0 ? 1: page, 5);
 
-                //dynamic obj = results["servIn"];
-                //var a = obj.servIn;
-                //var jsonSer = JsonConvert.DeserializeObject((string)results);
-                //var results = await _companyRepo.GetCompanyByInput(reqData.GetValue("searchIn").Value<string>());
-                //var a = reqData.GetValue("servCatIn").Value<string[]>();
-                //if(results != null)
-                //{
-                //    return Json(results);
-                //}
+                //if results is not null, return partial view with the results.
                 if (results != null)
                 {
                     return PartialView("_SearchResultsPartial", results);
@@ -92,17 +84,18 @@ namespace mor1.Controllers
             return null;
         }
 
+        //function to return autocomplete results
         [HttpGet]
         public async Task<JsonResult> GetSearchAutocompResults(string reqData)
         {
             try
             {
+                //get results from DB
                 var result = await _companyRepo.GetSearchAutocompByInput(reqData);
                 if( result != null)
                 {
                     return Json(result);
                 }
-                
             }
             catch (Exception)
             {
@@ -115,8 +108,10 @@ namespace mor1.Controllers
 
         #region IndividualCompany
 
+        //function to get individual company details
         public async Task<IActionResult> GetIndividualCompany(int id)
         {
+            //get company details with comments from DB
             var results = await _companyRepo.GetCompanyWcommentsById(id);
             var vm = new IndvCompCommVM()
             {
@@ -133,9 +128,17 @@ namespace mor1.Controllers
             {
                 return View();
             }
+
+            //rating calculation
             vm.CompComment.Rating = (decimal)(vm.pmRating + vm.priceRating + vm.workManRating) / 3;
+
+            //add comment to DB
             var returnId = await _companyRepo.AddComment(vm.CompComment);
+
+            //update company rating in DB
             await _companyRepo.UpdateCompanyRating(vm.CompComment.CompID);
+
+            //redirect to another action
             return RedirectToAction("GetIndividualCompany", new { id = vm.CompComment.CompID });
         }
 

@@ -20,7 +20,7 @@ $(function () {
                 currentCategory = "";
             $.each(items, function (index, item) {
                 var li;
-                if (item.category != currentCategory) {
+                if (item.category !== currentCategory) {
                     ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
                     currentCategory = item.category;
                 }
@@ -32,6 +32,7 @@ $(function () {
         }
     });
 
+    //to include category for autocomplete results
     $("#searchInput").catcomplete({
         delay: 300,
         source: function (request, response) {
@@ -62,7 +63,9 @@ $(function () {
         }
         //autoFocus: true
         //source: data
-    }).keyup(function (e) {
+    })
+        //to close autocomplete results box when "enter" is pressed.
+        .keyup(function (e) {
         e.preventDefault();
         if (e.which === 13) {
             $(this).catcomplete("close");
@@ -75,6 +78,7 @@ $(function () {
         goSearch(searchInput.val(), getSelServCatChkBoxVal(), getSelServChkBoxVal(), 0, getSortOption());
     });
 
+    //function to display next set of result when "Previous" or "Next" is clicked.
     resultsDisplay.on("click", ".page-link", function (e) {
         e.preventDefault();
         var subseqPageId = $(this).attr("data-subseqPageId");
@@ -99,7 +103,6 @@ $(function () {
     //RequestVerificationToken is important to protect against CSRF. Controller with AutoValidateAntiforgeryToken attribute
     //will check if token is generated. Else will get Error 400
     function goSearch(input, servCat, serv, subseqPageIdx, sortOption) {
-        //alert("input is: " + input);
         $.ajax({
             url: "SearchCompanies",
             type: "POST",
@@ -142,65 +145,11 @@ $(function () {
         return chkBoxArr;
     }
 
-    //display search results
-    //function displaySearchResults(respData) {
-    //    resultsDisplay.children().remove();
-    //    $.each(respData, function (idx, obj) {
-    //        resultsDisplay.append(
-    //            '<a href="#" class="compHref">' +
-    //            '<div class= "card trans_300">' +
-    //            '<div class="container-fluid">' +
-    //                '<div class="row">' +
-    //                    '<div class="col-md-2" style="background-color: greenyellow;">' +
-    //                        '<div class="compLogo" style="background-image: url(\'/images/' + obj.companyLogoFilename + '\')"></div>' +
-    //                    '</div>' +
-    //                    '<div class="col-md-5">' +
-    //                        '<div class="compName">' + obj.companyName + '</div>' + 
-    //                        '<div><i class="fas fa-map-marker-alt"></i> &nbsp;' + obj.address + '</div>' +
-    //                        '<div><i class="fas fa-envelope-square"></i>&nbsp;' + obj.email + '</div>' +
-    //                        '<div><i class="fas fa-phone"></i>&nbsp;' + obj.phone + '</div>' + 
-    //                        '<div>' + obj.companyRegNum + '</div>' +
-    //                        '<div>' +
-    //                            '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>' +
-    //                        '</div>' +
-    //                        '<div>' +
-    //                            'Click to read more...' +
-    //                        '</div>' +
-    //                    '</div>' +
-    //                    '<div class="col-md-3">' +
-    //                        '<div><strong>Services Provided:</strong></div>' +
-    //                        '<div>' +
-    //                            '<ul class="servList">' +
-    //                                getCompServList(obj.compServList) +
-    //                                //'<li>aaa</li>' +
-    //                                //'<li>bbb</li>' +
-    //                                //'<li>ccc</li>' +
-    //                            '</ul>' +
-    //                        '</div>' +
-    //                    '</div>' +
-    //                    '<div class="col-md-2" style="height: inherit;">' +
-    //                        '<div class="" style="top: 50%; position: relative; transform: translateY(-50%); text-align: center;">' +
-    //                            '<div>' +
-    //                                '<strong>Rating:</strong>' +
-    //                            '</div>' +
-    //                            '<div class="compRating" style="margin: 0 auto;">' +
-    //                                '9.8' +
-    //                            '</div>' +
-    //                        '</div>' +
-    //                    '</div>' +
-    //                '</div>' +
-    //            '</div>' +
-    //                            '</div >' +
-    //                        '</a >'
-    //            );
-    //    });
-    //}
 
     //to print company services list
     function getCompServList(obj) {
         var tempStr = '';
         $.each(obj, function (idx2, obj2) {
-            //alert(obj2.title);
             tempStr += '<li>' + obj2.title + '</li>';
         });
         return tempStr;

@@ -33,6 +33,8 @@ namespace mor1.Controllers
             return View();
         }
 
+        #region Homepage
+
         public IActionResult AddHomeSlides()
         {
             return View();
@@ -86,8 +88,17 @@ namespace mor1.Controllers
             var idList = JsonConvert.DeserializeObject<int[]>(reqData["IdList"].ToString());
             var result = _adminRepo.UpdateHomeSlidesOrder(idList.Take(3));
 
-            return Json(new { url= "Home/Index" });
+            return Json(new { url = "Home/Index" });
         }
+
+        public async Task<IActionResult> AddHomeVideo()
+        {
+
+            return View();
+        }
+
+        #endregion
+
 
         public IActionResult AdminDashboard()
         {

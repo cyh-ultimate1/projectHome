@@ -8,7 +8,6 @@ $(function () {
     var prevSelectedPageId = -1;
     var selectedPageChar = "A";
     var dirWrapper = $("#dirWrapper");
-    var activeLetter = null;
 
     /*========== implmentation ==========*/
     displayResults();
@@ -18,13 +17,13 @@ $(function () {
         //remove active from previous pagination.
         $("[data-pageId=" + selectedPageId + "]").parent().removeClass("active");
         //record current pagination.
-        if (selectedPageId > 0 && $(this).attr("data-pageId") == "prev") {
+        if (selectedPageId > 0 && $(this).attr("data-pageId") === "prev") {
             selectedPageId--;
             $("[data-pageId=" + selectedPageId + "]").parent().addClass("active");
-        } else if (selectedPageId < 25 && $(this).attr("data-pageId") == "next") {
+        } else if (selectedPageId < 25 && $(this).attr("data-pageId") === "next") {
             selectedPageId++;
             $("[data-pageId=" + selectedPageId + "]").parent().addClass("active");
-        } else if ($(this).attr("data-pageId") != "next" && $(this).attr("data-pageId") != "prev") {
+        } else if ($(this).attr("data-pageId") !== "next" && $(this).attr("data-pageId") !== "prev") {
             selectedPageId = $(this).attr("data-pageId");
             //add active to current pagination.
             $(this).parent().addClass("active");
@@ -35,9 +34,8 @@ $(function () {
         selectedPageChar = alphaStr.charAt(selectedPageId);
 
 
-        //alert($(this).attr("data-pageId"));
-        if (selectedPageId != prevSelectedPageId) {
-            //remove directory elements from page.
+        if (selectedPageId !== prevSelectedPageId) {
+            //remove directory elements from page and display new results.
             displayResults();
         }
     });

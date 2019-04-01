@@ -40,6 +40,7 @@ $(function () {
         //show next form
         currentForm.next().show();
 
+        //animation to show next page
         currentForm.animate(
             { opacity: 0 },
             {

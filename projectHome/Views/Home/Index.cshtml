@@ -9,6 +9,10 @@
     {
         Model[i] = homeslidesUrl + Model[i];
     }
+
+    //copy video path to var
+    var videomp4 = "/videos/" + "Eric.mp4";
+    var videoogg = "/videos/" + "Eric.ogg";
 }
 
 <link rel="stylesheet" href="~/css/homepage.css">
@@ -27,8 +31,8 @@
                 <!-- add muted if Chrome/Safari can't play -->
                 <video class="slider-video" preload="auto" loop autoplay muted controls
                        style="visibility: visible; width: 100%; height: 100%;">
-                    <source src="~/videos/Eric.mp4" type="video/mp4">
-                    <source src="~/videos/Eric.ogg" type="video/ogg">
+                    <source src= "@videomp4" type="video/mp4">
+                    <source src="@videoogg" type="video/ogg">
                 </video>
             </div>
 

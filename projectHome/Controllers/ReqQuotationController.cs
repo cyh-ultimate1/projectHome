@@ -27,6 +27,7 @@ namespace mor1.Controllers
             _propertyRepo = propertyRepo;
         }
 
+        //to direct to services selection page
         public IActionResult Index()
         {
             reqQuoteIndexVM vm = new reqQuoteIndexVM()
@@ -34,6 +35,8 @@ namespace mor1.Controllers
                 ServiceCategories = _reqQuoteRepo.GetAllCat().ToList(),
                 Services = _reqQuoteRepo.GetAllServices().OrderBy(a => a.CatID).ToList()
             };
+
+
             return View(vm);
         }
 
@@ -41,13 +44,12 @@ namespace mor1.Controllers
         public IActionResult Index(reqQuoteIndexVM vm)
         {
             var chkBoxArr = HttpContext.Request.Form["subCatSelect"];
-            //TempData["chkBoxArr"] = "someting";
             return RedirectToAction(nameof(reqQuoteForm), routeValues: new { chkBoxArr2 = chkBoxArr });
         }
 
+        //to direct to form page
         public IActionResult reqQuoteForm(string[] chkBoxArr2)
         {
-            //var temp = TempData["chkBoxArr"];
             reqQuoteFormVM vm = new reqQuoteFormVM()
             {
                 SelectCountry = _countryRepo.GetAll()
@@ -75,7 +77,6 @@ namespace mor1.Controllers
             {
                 _reqQuoteRepo.AddSelectedService(addedId, service.ID);
             }
-            //_reqQuoteRepo.AddSelectedService();
 
             //======== upload file ==============
             if (vm.FloorPlanFile != null && vm.FloorPlanFile.Count() > 0)
