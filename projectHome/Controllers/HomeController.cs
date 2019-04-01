@@ -22,12 +22,8 @@ namespace mor1.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var result = _homepageRepo.GetById(1);
-
+            //create new list and add the filename to it for homepage display
             List<string> resultList = new List<string>();
-            //resultList.Add(_homepageRepo.GetById(1));
-            //resultList.Add(_homepageRepo.GetById(2));
-            //resultList.Add(_homepageRepo.GetById(3));
 
             var result1 = await _homepageRepo.GetAllSlides();
             foreach(var item in result1)

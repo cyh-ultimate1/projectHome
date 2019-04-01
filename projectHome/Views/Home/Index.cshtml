@@ -3,9 +3,12 @@
 @{
     ViewData["Title"] = "Home Page";
     var homeslidesUrl = commonName.homeSlideFilePathUrl;
-    var slide1 = homeslidesUrl + Model[0];
-    var slide2 = homeslidesUrl + Model[1];
-    var slide3 = homeslidesUrl + Model[2];
+    var modelCount = Model.Count();
+    //loop through model and add homeslidesUrl to each model name
+    for (byte i =0; i<modelCount; i++)
+    {
+        Model[i] = homeslidesUrl + Model[i];
+    }
 }
 
 <link rel="stylesheet" href="~/css/homepage.css">
@@ -17,6 +20,7 @@
 <div class="swiper-container main-slider" id="myCarousel">
     <div class="swiper-wrapper">
 
+        <!--load video if weekend-->
         @if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
         {
             <div class="swiper-slide slider-bg-position" style="background-color: black;" data-hash="slide1">
@@ -31,7 +35,7 @@
         }
         else
         {
-            <div class="swiper-slide slider-bg-position" style="background: url('@slide1');"
+            <div class="swiper-slide slider-bg-position" style="background: url('@Model[0]');"
                  data-hash="slide1">
                 <div class="slideBox mySlide1">
                     <div class="card">
@@ -42,7 +46,7 @@
 
             </div>
 
-            <div class="swiper-slide slider-bg-position" style="background: url('@slide2'); background-position: center center !important;"
+            <div class="swiper-slide slider-bg-position" style="background: url('@Model[1]'); background-position: center center !important;"
                  data-hash="slide2">
                 <div class="slideBox mySlide2" style="background-color: transparent;">
                     <div class="card">
@@ -52,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="swiper-slide slider-bg-position" style="background-image: url('@slide3');"
+            <div class="swiper-slide slider-bg-position" style="background-image: url('@Model[2]');"
                  data-hash="slide3">
                 <div class="slideBox mySlide3" style="background-color: rgba(0, 0, 0, 0.3);">
                     <div class="card">
@@ -117,58 +121,6 @@
         <div style="text-align: center;">
             <a asp-controller="ReqQuotation" asp-action="Index" class="btn btn-lg myBtnOrange trans_300">GET YOUR FREE QUOTES NOW!</a>
         </div>
-        @*<div class="card-deck" id="servCards">
-                <div class="card myBoxShadow">
-                    <div class="aboutSecIcon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="aboutSecDesc">
-                        Looking to renovate, but don't know where to start? Ministry of Renovation is the go-to
-                        renovation
-                        platform for every single home owner/companies to an open market prices for Renovation.
-                    </div>
-                </div>
-                <div class="card myBoxShadow">
-                    <div class="aboutSecIcon">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
-                    <div class="aboutSecDesc">
-                        With thousands of contractors and interior firms in the market to choose from, we cut through
-                        the
-                        clutter to find contractors and interior designers that suit you best. Let us provide the Best
-                        Compares
-                        of Renovation Specialist for best price, quality and services. We will filter out clearly the
-                        good
-                        and
-                        bad renovator in a glance.
-                    </div>
-                </div>
-                <div class="card myBoxShadow">
-                    <div class="aboutSecIcon">
-                        <i class="fab fa-wpforms"></i>
-                    </div>
-                    <div class="aboutSecDesc">
-                        Simply request for non-obligatory quotes here, and we will guide you through your renovation
-                        process
-                        step by step. In fact, we have helped thousands of happy homeowners reach out to the right
-                        designers -
-                        achieving their dream homes in the process. Read their renovation journeys here.
-                    </div>
-                </div>
-                <div class="card myBoxShadow">
-                    <div class="aboutSecIcon">
-                        <i class="fas fa-thumbs-up"></i>
-                    </div>
-                    <div class="aboutSecDesc">
-                        When you're all set with the perfect designer, take your home's decor up a notch with the right
-                        furnishings to tie it all together. Browse through our curated collection of home furnishing
-                        brands
-                        and
-                        find the best home items that deserve a spot in your home.
-                        We are here to make your renovation simple (and less scary).
-                    </div>
-                </div>
-            </div>*@
     </div>
 </div>
 
@@ -212,65 +164,6 @@
             </div>
         </div>
     </div>
-    @*<div class="container-fluid">
-            <div id="servSecTitle">
-                <div>SERVICES PROVIDED</div>
-            </div>
-            <div class="card-deck">
-                <div class="card myBoxShadow">
-                    <a href="" class="">
-                        <img class="card-img-top " src="~/images/blog-02.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Professional Services</h4>
-                            <p class="card-text">
-                                Architect & Building Designer| Builder| Geometry (Feng Shui) |
-                                Interior Designers & Decorator| Landscaping & Gardening| PE-Civil Engineer| PE-
-                                Electrical Engineer| PE-Mechanical Engineer| PE-Plumber| Contractor| Smart Home
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="card myBoxShadow">
-                    <a href="">
-                        <img class="card-img-top" src="~/images/tools.jpeg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Renovation Contractor</h4>
-                            <p class="card-text">
-                                Air-Conditional| Aluminium| Automatic Gate/Roller Shutter| Building
-                                Material| Carpenter| Carpet| Door| Drafter/Designer| Flooring| Glass| Hacker| Handy
-                                Man| Home Security| Laundry| Mover| Marble Polish |Parquet| Painter| Pest Control|
-                                Plasterer| Plumber| Roofing| Stainless Steel|Wrought Iron/Mild Steel| Surface Top|
-                                Tiler| Washer
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="card myBoxShadow">
-                    <a href="">
-                        <img class="card-img-top" src="~/images/blog-03.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Accessories Supplier</h4>
-                            <p class="card-text">
-                                Bathroom Accessories| Curtain/Blind| Furniture| Lighting| Wall &
-                                Painting| Wall paper/Solar Film
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="card myBoxShadow">
-                    <a href="">
-                        <img class="card-img-top" src="~/images/blog-03.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Others</h4>
-                            <p class="card-text">
-                                Banks| Buffet| Financial Credit Loan| Insurance| Paint| Lamination
-                                (Carpentry)| Tiles
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>*@
 </div>
 
 
