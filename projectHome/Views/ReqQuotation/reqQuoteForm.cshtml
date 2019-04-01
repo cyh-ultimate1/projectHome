@@ -7,14 +7,6 @@
 <link rel="stylesheet" href="~/css/reqQuoteForm.css">
 
 <div class="">
-    @*<div class="container-fluid">
-        <div class="card" style="text-align: center; background-color:red; color: white;">
-            <h2>REQUEST QUOTE</h2>
-        </div>
-    </div>*@
-
-    
-
     <div>
         <form asp-controller="ReqQuotation" asp-action="reqQuoteForm" method="post" enctype="multipart/form-data" id="myForm">
             @Html.AntiForgeryToken()
@@ -259,7 +251,7 @@
                             <br />
                             <div class="col-md-12 ">
                                 <input type="checkbox" name="termCondChkBox" id="termCondChkBox" />
-                                <span>I have read and agree to MOR Terms and Condition.</span>
+                                <span>I have read and agree to Terms and Condition.</span>
                             </div>
                         </div>
                         <div class="form-group col-md-12">
@@ -271,11 +263,6 @@
                 </div>
             </div>
 
-            @*<div class="form-group">
-            <div class="col-md-12" style="text-align: center;">
-                <input type="submit" class="btn btn-lg btn-outline-success" value="SUBMIT" id="submitBtn" disabled />
-            </div>
-        </div>*@
         </form>
     </div>
 </div>
