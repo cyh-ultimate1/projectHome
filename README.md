@@ -1,7 +1,7 @@
 # projectHome
 
 Project: Home Services 
-Objective: A web portal for customers to search for vendors of their choices. This project was initially a real world project with a client. However, due to financial constraints, the project was abandoned.
+Objective: A one-stop web portal for customers to search for vendors of their choices. This project was initially a real world project with a client. However, due to financial constraints, the project was abandoned.
 
 Back-end: .NET Core 2.1 
 Front-end: Bootstrap, JQuery, JQuery UI, Swiper, SlickJS, FontAwesome 
