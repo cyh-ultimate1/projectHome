@@ -1,0 +1,110 @@
+﻿@model mor1.ViewModels.SearchCompVM
+@{
+    ViewData["Title"] = "SearchCompanies";
+}
+
+<link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="~/css/searchCompanies.css">
+
+<form asp-action="SearchCompanies" asp-controller="Company" method="post" id="searchForm">
+    @Html.AntiForgeryToken()
+    <div id="searchSec" class="">
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-11">
+                        <input type="text" class="form-control" placeholder="SEARCH" name="searchInput" id="searchInput" required />
+                    </div>
+                    <div class="col-1" style="padding-left: 0px;">
+                        <input type="submit" class="btn btn-success" id="serchBtn" value="&#xf002" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="searchOptionsSec">
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label class="col-3 control-label">Sort by:</label>
+                            <div class="col-9 filterDiv">
+                                <select class="form-control" id="selectSortOption">
+                                    <option disabled>-- Please select one --</option>
+                                    <option value="rating">Rating</option>
+                                    <option value="nameAZ">Name A-Z</option>
+                                    <option value="nameZA">Name Z-A</option>
+                                </select>
+                                @*<span asp-validation-for="reqQuoteForm.CountryID" class="text-danger"></span>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label class="col-3 control-label">Filter Rating:</label>
+                            <div class="col-9 filterDiv">
+                                <select class="form-control" id="selectFilterRating">
+                                    <option disabled>-- Please select one --</option>
+                                    <option value="5">5 stars</option>
+                                    <option value="4">4 stars</option>
+                                    <option value="3">3 stars</option>
+                                    <option value="2">2 stars</option>
+                                    <option value="1">1 stars</option>
+                                </select>
+                                @*<span asp-validation-for="reqQuoteForm.CountryID" class="text-danger"></span>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultsSec">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2" id="searchOpt">
+                    <div class="card" id="selOptions">
+                        <div>
+                            <div class="optTitle">
+                                Service Categories
+                            </div>
+                            <div>
+                                @foreach (var cat in Model.ServiceCategories)
+                                {
+                                    <label>
+                                        <input type="checkbox" name="selServCat" value="@cat.ID" />
+                                        <span>@cat.Name</span>
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <div class="optTitle">
+                                Services
+                            </div>
+                            <div>
+                                @foreach (var serv in Model.Services)
+                                {
+                                    <label>
+                                        <input type="checkbox" name="selServ" value="@serv.Value" />
+                                        <span>@serv.Text</span>
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10" id="resultsDisplay">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/searchCompanies.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+}

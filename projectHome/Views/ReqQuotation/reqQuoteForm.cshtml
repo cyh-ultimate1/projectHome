@@ -1,0 +1,291 @@
+﻿@model mor1.ViewModels.reqQuoteFormVM
+@{
+    ViewData["Title"] = "reqQuoteForm";
+    var idx = 0;
+}
+
+<link rel="stylesheet" href="~/css/reqQuoteForm.css">
+
+<div class="">
+    @*<div class="container-fluid">
+        <div class="card" style="text-align: center; background-color:red; color: white;">
+            <h2>REQUEST QUOTE</h2>
+        </div>
+    </div>*@
+
+    
+
+    <div>
+        <form asp-controller="ReqQuotation" asp-action="reqQuoteForm" method="post" enctype="multipart/form-data" id="myForm">
+            @Html.AntiForgeryToken()
+            <!--==== Selected Services ======-->
+            <div class="container-fluid">
+                <div class="col-md-12 card" id="selectedServices">
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Selected Services</label>
+                        <div>
+                            @for (int k = 0; k < Model.SelectedServices.Count(); k++)
+                            {
+                                <div class="selServBox">@Model.SelectedServices[k].Title</div>
+                                <input type="hidden" asp-for="@Model.SelectedServices[k].ID" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h4>Fill in the details below step by step:</h4>
+            </div>
+
+
+            <div class="container-fluid">
+                <div id="progressbarDiv">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Property Details</li>
+                        <li>Personal Details</li>
+                        <li>Terms &amp Conditions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============ the forms ===================================-->
+            <div class="container">
+                <div id="cardForms">
+                    <div class="card">
+                        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                        <div class="form-group">
+                            <label asp-for="reqQuoteForm.CountryID" class="col-md-6 control-label"></label>
+                            <div class="col-md-12">
+                                <select asp-for="reqQuoteForm.CountryID" asp-items="@Model.SelectCountry" class="form-control">
+                                    <option disabled>-- Please select one --</option>
+                                </select>
+                                <span asp-validation-for="reqQuoteForm.CountryID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label asp-for="reqQuoteForm.PropertyTypeID" class="control-label"></label>
+                                <span class="myAsterisk">&nbsp;&#42;</span>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                @foreach (var item in Model.PropertyTypes)
+                                {
+                                    <div class="PropTypeRadio">
+                                        @item.PropertyTypeName
+                                        <i class="@item.IconName"></i>
+                                        @if (idx == 0)
+                                        {
+                                            <div style="text-align: center;"><input asp-for="reqQuoteForm.PropertyTypeID" type="radio" value="@item.ID" required checked /></div>
+                                            idx = 1;
+                                        }
+                                        else
+                                        {
+                                            <div style="text-align: center;"><input asp-for="reqQuoteForm.PropertyTypeID" type="radio" value="@item.ID" required /></div>
+                                        }
+
+                                    </div>
+                                }
+                                <span asp-validation-for="reqQuoteForm.CountryID" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label asp-for="reqQuoteForm.PropertyStatusID" class="col-md-12 control-label"></label>
+                                    <div class="col-md-12">
+                                        <select asp-for="reqQuoteForm.PropertyStatusID" asp-items="@Model.SelectPropertyStatus" class="form-control">
+                                            <option disabled>-- Please select one --</option>
+                                        </select>
+                                        <span asp-validation-for="reqQuoteForm.PropertyStatusID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="reqQuoteForm.AreaSize" class="col-md-12 control-label"></label>
+                                    <div class="input-group col-md-12">
+                                        <input asp-for="reqQuoteForm.AreaSize" class="form-control" value="0"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">m2</span>
+                                        </div>
+                                        <span asp-validation-for="reqQuoteForm.AreaSize" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-12">
+                                        <label asp-for="reqQuoteForm.RenovBudget" class="control-label"></label>
+                                        <span class="myAsterisk">&nbsp;&#42;</span>
+                                    </div>
+                                    
+                                    <div class="input-group col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$S</span>
+                                        </div>
+                                        <input asp-for="reqQuoteForm.RenovBudget" class="form-control" />
+                                        <span asp-validation-for="reqQuoteForm.RenovBudget" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label asp-for="reqQuoteForm.KeyCollectionPeriod" class="col-md-12 control-label"></label>
+                                    <div class="col-md-12">
+                                        <select asp-for="reqQuoteForm.KeyCollectionPeriod" class="form-control">
+                                            <option disabled>-- Please select one --</option>
+                                            <option value="keys-collected">Keys Collected</option>
+                                            <option value="keys-not-collected">Keys Not Collected</option>
+                                        </select>
+                                        <span asp-validation-for="reqQuoteForm.CountryID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="reqQuoteForm.LoanRequired" class="col-md-12 control-label"></label>
+                                    <div class="col-md-12">
+                                        <select asp-for="reqQuoteForm.LoanRequired" class="form-control">
+                                            <option disabled>-- Please select one --</option>
+                                            <option value="false">No</option>
+                                            <option value="true">Yes</option>
+                                        </select>
+                                        <span asp-validation-for="reqQuoteForm.LoanRequired" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="reqQuoteForm.Style" class="col-md-12 control-label"></label>
+                                    <div class="col-md-12">
+                                        <select asp-for="reqQuoteForm.Style" class="form-control">
+                                            <option disabled>-- Please select one --</option>
+                                            <option value="no-preference">No Preference</option>
+                                            <option value="some-preference">Some Preference</option>
+                                        </select>
+                                        <span asp-validation-for="reqQuoteForm.Style" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FloorPlanFile" class="col-md-2 control-label"></label>
+                            <div class="col-md-12">
+                                <input asp-for="FloorPlanFile" type="file" multiple class="form-control-file" />
+                                <span asp-validation-for="FloorPlanFile" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="reqQuoteForm.Comment" class="col-md-2 control-label"></label>
+                            <div class="col-md-12">
+                                <textarea asp-for="reqQuoteForm.Comment" class="form-control"></textarea>
+                                <span asp-validation-for="reqQuoteForm.Comment" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn btn-primary nextBtn">NEXT</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label asp-for="reqQuoteForm.FullName" class="control-label"></label>
+                                <span class="myAsterisk">&nbsp;&#42;</span>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <input asp-for="reqQuoteForm.FullName" class="form-control" />
+                                <span asp-validation-for="reqQuoteForm.FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label asp-for="reqQuoteForm.ContactNum" class="control-label"></label>
+                                <span class="myAsterisk">&nbsp;&#42;</span>
+                            </div>
+                            
+                            <div class="col-md-12">
+                                <input asp-for="reqQuoteForm.ContactNum" class="form-control" />
+                                <span asp-validation-for="reqQuoteForm.ContactNum" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="reqQuoteForm.Email" class="col-md-12 control-label"></label>
+                            <div class="col-md-12">
+                                <input asp-for="reqQuoteForm.Email" class="form-control" />
+                                <span asp-validation-for="reqQuoteForm.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label asp-for="reqQuoteForm.Gender" class="control-label"></label>
+                                <span class="myAsterisk">&nbsp;&#42;</span>
+                            </div>
+                            
+                            <div class="col-md-12 radioSelection">
+                                <input asp-for="reqQuoteForm.Gender" type="radio" value="Male" /><span>Male</span>
+                                <input asp-for="reqQuoteForm.Gender" type="radio" value="Female" /><span>Female</span>
+                                <span asp-validation-for="reqQuoteForm.Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="reqQuoteForm.Address" class="col-md-12 control-label"></label>
+                            <div class="col-md-12">
+                                <input asp-for="reqQuoteForm.Address" class="form-control" />
+                                <span asp-validation-for="reqQuoteForm.Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn prevBtn">PREVIOUS</button>
+                            <button type="button" class="btn btn-primary nextBtn">NEXT</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Terms and Condition</label>
+                            <hr />
+                            <div class="col-md-12 ">
+                                <div class="form-control" id="termsConditionBox">
+                                    <p>What information do we collect?</p>
+                                    <p>Aliquam ultrices porttitor libero et sagittis. Etiam at scelerisque quam, quis consectetur nisl. Sed gravida risus sit amet enim euismod, vitae varius metus pellentesque. Vestibulum quis vehicula metus. Suspendisse quis ipsum vestibulum urna tincidunt commodo eu sed massa. Nullam molestie lacus id risus cursus pharetra. Fusce pellentesque aliquet ultricies. Curabitur maximus erat eu hendrerit semper. Suspendisse ornare neque eget eros tincidunt, sit amet accumsan ex semper. Nullam ultrices est lorem. Sed tincidunt, metus efficitur laoreet congue, massa massa egestas lorem, sit amet elementum turpis mauris ac odio. Mauris pulvinar mauris orci, at molestie orci maximus non. Quisque in leo ultricies, dictum purus ut, posuere quam. </p>
+                                    <p>Duis sagittis, nulla quis tristique mollis, urna arcu accumsan risus, ut dignissim est ligula nec lectus. Vivamus varius dui sit amet sollicitudin ullamcorper. Sed vestibulum nunc id mattis consectetur. Maecenas ut dignissim est. Curabitur pretium ultrices eros, sed commodo enim rhoncus ac. Curabitur id odio vel erat interdum commodo. Nulla semper dolor eget placerat aliquam. Nunc quam libero, mollis eget ante nec, rutrum rutrum mi. Praesent non vestibulum augue. Quisque quis sodales eros. Cras sit amet eleifend lorem, sed lacinia tellus.</p>
+                                    <p>Vestibulum purus turpis, accumsan at lacinia eu, molestie nec quam. Aliquam eget posuere velit. Quisque laoreet purus sit amet posuere porttitor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vehicula tortor non risus lacinia pulvinar. Nam vel neque fermentum, aliquet felis eu, pellentesque sem. Sed vitae maximus leo. Integer fermentum nibh eget erat pulvinar rhoncus. Pellentesque bibendum quam sit amet consequat dapibus. Fusce auctor ut mauris quis volutpat. Nullam vel aliquet urna.</p>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-md-12 ">
+                                <input type="checkbox" name="termCondChkBox" id="termCondChkBox" />
+                                <span>I have read and agree to MOR Terms and Condition.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn prevBtn">PREVIOUS</button>
+                            <input type="submit" class="btn btn-success" value="SUBMIT" id="submitBtn" disabled />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            @*<div class="form-group">
+            <div class="col-md-12" style="text-align: center;">
+                <input type="submit" class="btn btn-lg btn-outline-success" value="SUBMIT" id="submitBtn" disabled />
+            </div>
+        </div>*@
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @*@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }*@
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/reqQuoteForm.js"></script>
+}

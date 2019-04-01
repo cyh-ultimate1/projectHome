@@ -1,0 +1,279 @@
+﻿@model List<string>
+@using mor1.Models
+@{
+    ViewData["Title"] = "Home Page";
+    var homeslidesUrl = commonName.homeSlideFilePathUrl;
+    var slide1 = homeslidesUrl + Model[0];
+    var slide2 = homeslidesUrl + Model[1];
+    var slide3 = homeslidesUrl + Model[2];
+}
+
+<link rel="stylesheet" href="~/css/homepage.css">
+
+
+
+<!--============== Swiper slider ================ -->
+<!-- Slider main container -->
+<div class="swiper-container main-slider" id="myCarousel">
+    <div class="swiper-wrapper">
+
+        @if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+        {
+            <div class="swiper-slide slider-bg-position" style="background-color: black;" data-hash="slide1">
+                <!-- add muted if Chrome/Safari can't play -->
+                <video class="slider-video" preload="auto" loop autoplay muted controls
+                       style="visibility: visible; width: 100%; height: 100%;">
+                    <source src="~/videos/Eric.mp4" type="video/mp4">
+                    <source src="~/videos/Eric.ogg" type="video/ogg">
+                </video>
+            </div>
+
+        }
+        else
+        {
+            <div class="swiper-slide slider-bg-position" style="background: url('@slide1');"
+                 data-hash="slide1">
+                <div class="slideBox mySlide1">
+                    <div class="card">
+                        <div id="slideTitle">Build Your Dream Home With Us</div>
+                        <p><a href="#" class="btn myBtnOrange btn-lg">DISCOVER NOW!</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-slide slider-bg-position" style="background: url('@slide2'); background-position: center center !important;"
+                 data-hash="slide2">
+                <div class="slideBox mySlide2" style="background-color: transparent;">
+                    <div class="card">
+                        <div id="slideTitle2">Singapore's No.1 Online Portal For Renovation Services</div>
+                        <p><a href="#" class="btn myBtnOrange btn-lg">LEARN MORE</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slider-bg-position" style="background-image: url('@slide3');"
+                 data-hash="slide3">
+                <div class="slideBox mySlide3" style="background-color: rgba(0, 0, 0, 0.3);">
+                    <div class="card">
+                        <div id="slideTitle3">The Right Choice For You and Your Family</div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-prev"><i class="fa fa-chevron-left"></i></div>
+    <div class="swiper-button-next"><i class="fa fa-chevron-right"></i></div>
+</div>
+
+
+
+<!--======== about section ==============-->
+<div class="" id="aboutSec">
+    <div class="container">
+        <div id="aboutSecTitle">
+            <div>Looking to renovate, but don't know where to go to?</div>
+            <div>You are in the right place.</div>
+            <div>With 3 simple steps, we show you the door to the best contractors in town.</div>
+        </div>
+        <div class="card-deck" id="servStepsWrapper">
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10102;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Select the type of services</div>
+                </div>
+            </div>
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10103;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Fill in your home particulars</div>
+                </div>
+            </div>
+            <div class="col-4 card">
+                <div class="">
+                    <div class="stepIcon">
+                        &#10104;
+                    </div>
+                </div>
+                <div class="stepDesc">
+                    <div>Submit</div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a asp-controller="ReqQuotation" asp-action="Index" class="btn btn-lg myBtnOrange trans_300">GET YOUR FREE QUOTES NOW!</a>
+        </div>
+        @*<div class="card-deck" id="servCards">
+                <div class="card myBoxShadow">
+                    <div class="aboutSecIcon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="aboutSecDesc">
+                        Looking to renovate, but don't know where to start? Ministry of Renovation is the go-to
+                        renovation
+                        platform for every single home owner/companies to an open market prices for Renovation.
+                    </div>
+                </div>
+                <div class="card myBoxShadow">
+                    <div class="aboutSecIcon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="aboutSecDesc">
+                        With thousands of contractors and interior firms in the market to choose from, we cut through
+                        the
+                        clutter to find contractors and interior designers that suit you best. Let us provide the Best
+                        Compares
+                        of Renovation Specialist for best price, quality and services. We will filter out clearly the
+                        good
+                        and
+                        bad renovator in a glance.
+                    </div>
+                </div>
+                <div class="card myBoxShadow">
+                    <div class="aboutSecIcon">
+                        <i class="fab fa-wpforms"></i>
+                    </div>
+                    <div class="aboutSecDesc">
+                        Simply request for non-obligatory quotes here, and we will guide you through your renovation
+                        process
+                        step by step. In fact, we have helped thousands of happy homeowners reach out to the right
+                        designers -
+                        achieving their dream homes in the process. Read their renovation journeys here.
+                    </div>
+                </div>
+                <div class="card myBoxShadow">
+                    <div class="aboutSecIcon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div class="aboutSecDesc">
+                        When you're all set with the perfect designer, take your home's decor up a notch with the right
+                        furnishings to tie it all together. Browse through our curated collection of home furnishing
+                        brands
+                        and
+                        find the best home items that deserve a spot in your home.
+                        We are here to make your renovation simple (and less scary).
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+<!--============= cards  ======================================= -->
+<div class="" id="servSec">
+    <div class="row">
+        <div class="servSecImgWrapper col-md-6">
+            <div class="servSecImg" style="background-image: url('/images/architect.jpeg');"></div>
+        </div>
+        <div class="col-md-6" id="servSecDescWrapper">
+            <div id="servSecTitle">
+                <div>SERVICES FOR YOU</div>
+            </div>
+            <div class="row servCatSec">
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div>Professional Services</div>
+                </div>
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>Renovation Contractor</div>
+                </div>
+            </div>
+            <div class="row servCatSec">
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <div>Supplier</div>
+                </div>
+                <div class="col-6">
+                    <div class="servIcon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>Renovation Contractor</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="container-fluid">
+            <div id="servSecTitle">
+                <div>SERVICES PROVIDED</div>
+            </div>
+            <div class="card-deck">
+                <div class="card myBoxShadow">
+                    <a href="" class="">
+                        <img class="card-img-top " src="~/images/blog-02.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Professional Services</h4>
+                            <p class="card-text">
+                                Architect & Building Designer| Builder| Geometry (Feng Shui) |
+                                Interior Designers & Decorator| Landscaping & Gardening| PE-Civil Engineer| PE-
+                                Electrical Engineer| PE-Mechanical Engineer| PE-Plumber| Contractor| Smart Home
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card myBoxShadow">
+                    <a href="">
+                        <img class="card-img-top" src="~/images/tools.jpeg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Renovation Contractor</h4>
+                            <p class="card-text">
+                                Air-Conditional| Aluminium| Automatic Gate/Roller Shutter| Building
+                                Material| Carpenter| Carpet| Door| Drafter/Designer| Flooring| Glass| Hacker| Handy
+                                Man| Home Security| Laundry| Mover| Marble Polish |Parquet| Painter| Pest Control|
+                                Plasterer| Plumber| Roofing| Stainless Steel|Wrought Iron/Mild Steel| Surface Top|
+                                Tiler| Washer
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card myBoxShadow">
+                    <a href="">
+                        <img class="card-img-top" src="~/images/blog-03.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Accessories Supplier</h4>
+                            <p class="card-text">
+                                Bathroom Accessories| Curtain/Blind| Furniture| Lighting| Wall &
+                                Painting| Wall paper/Solar Film
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card myBoxShadow">
+                    <a href="">
+                        <img class="card-img-top" src="~/images/blog-03.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">Others</h4>
+                            <p class="card-text">
+                                Banks| Buffet| Financial Credit Loan| Insurance| Paint| Lamination
+                                (Carpentry)| Tiles
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>*@
+</div>
+
+
+@section scripts{
+    <script src="~/js/homepage.js"></script>
+}

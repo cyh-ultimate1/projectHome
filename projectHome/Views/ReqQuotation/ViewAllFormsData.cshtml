@@ -1,0 +1,114 @@
+﻿@model IEnumerable<mor1.Models.ReqQuoteModels.ReqQuoteForm>
+
+@{
+    ViewData["Title"] = "ViewAllFormsData";
+}
+
+<h2>ViewAllFormsData</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyStatusID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RenovBudget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeyCollectionPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Style)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryID)
+                @System.Net.WebUtility.HtmlEncode("<script>alert('sample')</script>");
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyStatusID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RenovBudget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeyCollectionPeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanRequired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Style)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

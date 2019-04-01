@@ -1,0 +1,212 @@
+﻿
+body{
+    position: relative !important;
+}
+
+div{
+    /*border: solid black 1px;*/
+}
+.catWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.catTitleWrapper {
+    /*background-color: #26c81d;*/
+    background-color: #f76707;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    font-size: 23px;
+}
+.catTitleWrapper a{
+    text-decoration: none;
+    color: white;
+}
+.subCatImgWrapper{
+    padding-right: 0px;
+}
+.subCatImg {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    /*background-color: yellow;*/
+    min-height: 150px;
+    height: 100%;
+}
+.card{
+    margin-bottom: 5px;
+}
+.card-title{
+    text-transform: uppercase;
+}
+.card-text {
+    /*white-space: nowrap;*/
+    /*overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+.card-block {
+    border-left: solid 1px lightgray;
+}
+
+/*=============== checkbox ===================*/
+.subCatSelectWrapper1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.subCatSelectWrapper {
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.subCatSelectWrapper label{
+    cursor: pointer;
+}
+
+.subCatSelectWrapper input[type=checkbox] {
+    display: none;
+}
+
+.customChkBox {
+    margin: 0 auto;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: none;
+    position: relative;
+}
+.customChkBoxBorder {
+    border: solid 2px red;
+}
+
+/* On mouse-over, add a grey background color */
+.subCatSelectWrapper input[type=checkbox]:hover ~ .customChkBox {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.subCatSelectWrapper input[type=checkbox]:checked ~ .customChkBox {
+    /*background-color: #2196F3;*/
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.customChkBox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.subCatSelectWrapper input[type=checkbox]:checked ~ .customChkBox::after {
+    display: block;
+}
+.subCatSelectWrapper .customChkBox::after {
+    /*left: 0px;*/
+    /*top: 0px;*/
+    bottom: 2px;
+    width: 20px;
+    height: 35px;
+    border: solid #26c81d;
+    border-width: 0 8px 8px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+    
+
+
+
+
+/*======== Selected services box =================*/
+#selectedServicesSec {
+    position: relative;
+    padding: 10px;
+}
+#selectedServicesWrapper {
+    /*border: solid 1px blue;*/
+    min-height: 200px;
+    position: fixed;
+    /*overflow-y: scroll;*/
+    /*max-height: 55%;*/
+    width: 200px;
+    border-radius: 0px;
+    padding: 5px;
+}
+#selectedServicesTitle {
+    color: white;
+    background-color: #007bff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#selectedServicesGrp {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.yourService {
+    background-color: #26c81d;
+    color: white;
+    text-transform: uppercase;
+    margin: 5px 0px;
+}
+.yourService > div{
+    padding: 0 7px;
+}
+.yourService a{
+    text-decoration: none;
+}
+.yourService .fa-times {
+    font-size: 25px;
+    color: white;
+}
+.btn-outline-danger{
+    color: red;
+    border-color: red;
+    font-weight: bold;
+}
+.btn-outline-danger:hover {
+    background-color: red;
+}
+
+/*======= responsive design =========*/
+#topDiv {
+    position: fixed;
+    top: 100px;
+    text-align: center;
+    width: 92vw;
+    z-index: +999;
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 769px) {
+    body {
+        position: relative !important;
+    }
+    #topDiv {
+        top: 100px !important;
+        visibility: visible;
+    }
+
+    #selectedServicesWrapper {
+        width: 17vw;
+        position: fixed;
+        top: -200px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    
+    #openingDiv {
+        margin-top: 140px;
+    }
+    #selectedServicesWrapper {
+        width: 93vw;
+    }
+    
+}
+

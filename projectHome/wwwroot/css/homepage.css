@@ -1,0 +1,386 @@
+﻿
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+
+.trans_300 {
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+
+/*********** carousel and swiper **********************/
+/*Swiper*/
+.swiper-container {
+    width: 100%;
+    height: 85vh;
+}
+
+.swiper-slide {
+    /* text-align: center; */
+    /* font-size: 18px; */
+    /* background: #fff; */
+    /* Center slide text vertically */
+    /* display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex; */
+    /* -webkit-box-pack: center;
+	-ms-flex-pack: center; */
+    /* -webkit-justify-content: flex-start;
+	justify-content: flex-start; */
+    /* -webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;  */
+    /* flex-direction: column-reverse;*/
+    /*text-transform: capitalize;*/
+    
+}
+
+.slideBox {
+    /*display: flex;
+    flex-wrap: wrap;
+    justify-content: center;*/
+    height: 100%;
+    /*margin-top: 50px;*/
+    background-color: rgba(0, 0, 0, 0.65);
+    position: relative;
+}
+
+/*.slideBox > div {
+    width: 50%;
+    text-align: left;
+}*/
+
+.mySlide1 > .card {
+    height: 70%;
+    width: 30%;
+    position: absolute;
+    bottom: 1vh;
+    right: 10%;
+    background-color: transparent;
+    font-size: larger;
+    color: white;
+    border: none;
+    text-align: left;
+}
+
+    .mySlide1 > .card > #slideTitle {
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .mySlide1 > .card a {
+        color: white;
+    }
+
+.mySlide2 > .card{
+    height: 60%;
+    width: 30%;
+    position: absolute;
+    bottom: 10vh;
+    right: 10%;
+    padding: 10px;
+    
+}
+    .mySlide2 > .card > #slideTitle2{
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+.mySlide3{
+
+}
+
+    .mySlide3 > .card{
+        height: 30%;
+        width: 50%;
+        position: absolute;
+        top: 10vh;
+        left: 25vw;
+        padding: 10px;
+        background-color: transparent;
+        color: black;
+        border: none;
+        text-align: center;
+    }
+        .mySlide3 > .card > #slideTitle3{
+            font-size: 50px;
+            font-weight: bold;
+        }
+        /*.item1 {
+        display: block;
+        position: relative;
+        color: black;
+        background-color: rgb(245,245,245);
+        opacity: 0.7;
+    }*/
+        /* .slideText{
+	display: flex;
+	border: solid;
+	align-items: flex-end;
+	flex-direction: column-reverse;
+} */
+        .main-slider .slider-bg-position {
+            background-size: cover !important;
+            background-position: center top !important;
+            background-repeat: no-repeat !important;
+        }
+
+.main-slider .swiper-button-prev, .main-slider .swiper-button-next {
+    background-image: none !important;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    background-color: #767676;
+}
+
+.main-slider h2 {
+    color: #fff;
+    font-size: 54px;
+    line-height: 59px;
+    padding: 0 19%;
+    /*text-transform: uppercase;*/
+}
+
+.main-slider .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.9)
+}
+
+.main-slider .swiper-pagination-bullet-active {
+    background: #0297ff
+}
+
+
+/*========= services section ===================*/
+#servSec {
+    background-color: var(--myMaroon);
+    /*padding-top: 15px;
+    padding-bottom: 15px;*/
+}
+
+    #servSec #servSecImgWrapper{
+        /*padding: 0px !important;*/
+    }
+    #servSec .col-md-5{
+        padding: 0px;
+    }
+    #servSec .servSecImg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-height: 350px;
+        height: 100%;
+    }
+
+    #servSec #servSecDescWrapper{
+        padding: 10px;
+    }
+    #servSec #servSecTitle {
+        text-align: center;
+        font-size: 35px;
+        font-weight: bold;
+        color: white;
+    }
+
+    #servSec .servCatSec{
+        text-align: center;
+        font-weight: bold;
+    }
+
+        #servSec .servCatSec .servIcon{
+            font-size: 40px;
+            
+        }
+
+        .card {
+            border-radius: 0px !important;
+        }
+
+.card-img-top {
+    /*padding: 5px;*/
+    border-radius: inherit;
+    width: 100%;
+}
+
+.card-deck .card a {
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    /* transition: all 1000ms ease; */
+}
+
+.card-deck .card a:hover {
+    background-color: #2ecc71;
+    border-radius: inherit;
+}
+
+.card-deck .card a:hover .card-title {
+    /*font-size: 30px;*/
+}
+
+.card-deck .card a:hover .card-body {
+    color: white;
+}
+
+.card .card-body .card-title {
+    font-weight: bold;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.card .card-body .card-text {
+    font-size: 14px;
+}
+
+
+/*.contentContainer {
+    background-color: #eaebf0;
+}*/
+
+
+/**********about section*************/
+#aboutSec {
+    margin-top: 50px;
+    /* margin-bottom: 20px; */
+    /*background-color: #f76707;*/
+    /*min-height: 500px;*/
+    margin-bottom: 50px;
+}
+
+#aboutSecTitle {
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#aboutSec .card{
+    background-color: white;
+    height: inherit;
+    border: none;
+    /*font-size: 16px;*/
+}
+
+#aboutSec .aboutSecIcon {
+    text-align: center;
+    font-size: 80px;
+    color: white;
+    background-color: #f76707;
+    border: solid 1px #f76707;
+}
+
+#aboutSec .aboutSecDesc{
+    padding: 10px;
+}
+
+#aboutSec .myBtnOrange:hover {
+    color: white;
+    transform: scale(1.05);
+}
+/*======== modal section  ===============*/
+.modal-backdrop {
+    background-color: black !important;
+    opacity: 0.8 !important;
+}
+
+.loginModalBody {
+    background-color: white;
+    /* width: 20pc; */
+    /* height: 500px; */
+}
+
+.formDiv {
+    position: relative;
+    margin-top: 30px;
+}
+
+/* Label */
+.modalLabel {
+    color: #757575;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 5px;
+    transition: all 0.3s ease;
+}
+
+/* active */
+.formInput:focus ~ .modalLabel,
+.formInput.used ~ .modalLabel {
+    top: -25px;
+    transform: scale(.75);
+    left: -10px;
+    /* font-size: 14px; */
+    color: #4a89dc;
+}
+
+/* by default have radius */
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-header {
+    background-color: #FF8C00;
+    color: white;
+    border-radius: inherit;
+}
+
+.modal-title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.myBtnOrange {
+    background-color: var(--myOrange);
+    color: white;
+    font-weight: bold;
+}
+
+/*========== service step section ====================*/
+#servStepsWrapper{
+
+}
+    #servStepsWrapper .card {
+        background-color: transparent;
+        text-align: center;
+    }
+    #servStepsWrapper .stepIcon {
+        
+        font-size: 90px;
+        color: black;
+        /*border: solid;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;*/
+        /*background-color: orange;*/
+    }
+    #servStepsWrapper .stepDesc {
+        /*background-color: var(--myMaroon);*/
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        min-height: 70px;
+    }

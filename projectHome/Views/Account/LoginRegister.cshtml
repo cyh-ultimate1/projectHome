@@ -1,0 +1,112 @@
+﻿@using Microsoft.AspNetCore.Authentication
+
+@model mor1.Models.AccountViewModels.LoginRegisterViewModel
+@{
+    ViewData["Title"] = "LoginRegister";
+}
+@inject IAuthenticationSchemeProvider SchemeProvider
+
+<link rel="stylesheet" href="~/css/loginRegister.css">
+
+<div class="container mainWrapper">
+    <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item "><a class="nav-link active" data-toggle="tab" href="#loginDiv">LOGIN</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#regDiv">REGISTER</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="loginDiv" class="tab-pane fade show active card">
+            <div class="container">
+                <form asp-controller="Account" asp-action="LoginRegister" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="@Model.IsLogin" value="true" />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LoginViewModel.Email" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.LoginViewModel.Email" class="form-control" />
+                            <span asp-validation-for="@Model.LoginViewModel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LoginViewModel.Password" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.LoginViewModel.Password" class="form-control" />
+                            <span asp-validation-for="@Model.LoginViewModel.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                <label asp-for="@Model.LoginViewModel.RememberMe">
+                                    <input asp-for="@Model.LoginViewModel.RememberMe" />
+                                    @Html.DisplayNameFor(m => m.LoginViewModel.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-success">LOGIN</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a asp-action="ForgotPassword">Forgot your password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="regDiv" class="tab-pane fade card">
+            <div class="container">
+                <form asp-controller="Account" asp-action="LoginRegister" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="@Model.IsLogin" value="false" />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="@Model.RegisterViewModel.Email" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.RegisterViewModel.Email" class="form-control" />
+                            <span asp-validation-for="@Model.RegisterViewModel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.RegisterViewModel.Password" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.RegisterViewModel.Password" class="form-control" />
+                            <span asp-validation-for="@Model.RegisterViewModel.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.RegisterViewModel.ConfirmPassword" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="@Model.RegisterViewModel.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="@Model.RegisterViewModel.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-success">REGISTER</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @*<div id="menu2" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Menu 3</h3>
+            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>*@
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

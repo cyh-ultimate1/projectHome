@@ -1,0 +1,111 @@
+﻿
+#searchSec{
+    /*background-color: aqua;*/
+    padding: 3px;
+}
+#serchBtn {
+    font-family: "Font Awesome 5 Free";
+    font-weight: bolder;
+}
+
+/*====== search options section ===================*/
+#searchOptionsSec label{
+    padding-right: 0px;
+}
+#searchOptionsSec .filterDiv{
+    padding-left: 5px;
+}
+
+
+    #resultsSec {
+        /*background-color: coral;*/
+        padding-top: 5px;
+        padding-bottom: 5px;
+        min-height: 80vh;
+    }
+    #resultsSec .card {
+        margin: 10px 0px 10px 0px;
+        border-radius: 0px;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px
+    }
+
+#searchOpt{
+    padding-right: 1px;
+}
+    #searchOpt #selOptions.card{
+        margin-top: 0px;
+    }
+    #searchOpt > .card {
+        height: 100%;
+    }
+
+.compHref {
+    color: inherit;
+    background-color: darkcyan;
+    font-size: 14px;
+}
+    .compHref .compName{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .compHref .compRating{
+        width: 50px;
+        font-size:large;
+        background-color: mediumaquamarine;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 7px;
+    }
+    .compHref .fa-map-marker-alt, .compHref .fa-envelope-square {
+        color: dodgerblue;
+    }
+    .compHref .servList{
+        padding: 0px;
+    }
+    .compHref .servList li {
+        list-style: none;
+    }
+        .compHref .servList li:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f058 \00a0";
+            color: red;
+        }
+    .compHref:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+        .compHref:hover > .card {
+            transform: scale(1.02);
+        }
+
+.compLogo {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    min-height: 100px;
+    height: 100%;
+}
+
+.fa-star {
+    color: #ffc107;
+}
+
+#selOptions .optTitle{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+#selOptions label{
+    margin-bottom: 0px;
+}
+/*===== customize Autocomplete ==========*/
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    background-color: gold;
+}

@@ -1,0 +1,121 @@
+﻿
+<!--=========== top navbar =================-->
+<div class="fixed-top navTop">
+    <!-- navbar1 . use py-0 to remove padding to adjust navbar height-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-0" id="navbar1">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/myCompanyLogo.png" alt="nologo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a asp-controller="Company" asp-action="SearchCompanies">Search</a>
+
+        <div class="collapse navbar-collapse navbarSupportedContent" id="">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item socialIcons">
+                    <a href="#" data-toggle="tooltip" data-placement="auto" title="Pinterest">
+                        <i class="fab fa-pinterest"
+                           aria-hidden="true" style="color: #bd081b;"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" data-placement="auto" title="Instagram">
+                        <i class="fab fa-instagram"
+                           aria-hidden="true" style="color: #8f4ac7;"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" data-placement="auto" title="Facebook">
+                        <i class="fab fa-facebook"
+                           aria-hidden="true"  style="color: blue;"></i>
+                    </a>
+                    <a href="#" data-toggle="tooltip" data-placement="auto" title="Twitter">
+                        <i class="fab fa-twitter"
+                           aria-hidden="true"></i>
+                    </a>
+                </li>
+
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
+    </nav>
+
+    <!-- navbar2 . use py-0 to remove padding to adjust navbar height-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-0" id="navbar2">
+        <div class="collapse navbar-collapse navbarSupportedContent" id="">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
+                        Home
+                        <!-- <span class="sr-only">(current)</span> -->
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="ReqQuotation" asp-action="Index">Get Free Quotes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tenant Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Market Place & Bidding</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Newsletter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Energy Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Directory" asp-action="Index">Directory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Advertise With Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@*<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">mor1</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>*@

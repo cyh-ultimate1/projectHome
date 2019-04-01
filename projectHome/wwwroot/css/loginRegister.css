@@ -1,0 +1,21 @@
+﻿
+.card{
+    border-radius: 0px;
+}
+.nav-tabs .nav-item .nav-link{
+    border: solid 0.5px;
+    color: black;
+    font-weight: bold;
+}
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.mainWrapper{
+    margin-bottom: 50px;
+}
+
+label{
+    font-weight: bold;
+}

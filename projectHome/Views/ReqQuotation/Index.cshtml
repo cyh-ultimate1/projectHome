@@ -1,0 +1,182 @@
+﻿@model mor1.ViewModels.reqQuoteIndexVM
+@{
+    ViewData["Title"] = "Index";
+    var subCat = Model.Services;
+    var catLength = Model.ServiceCategories.Count();
+    int idx = 0;
+    int subCatWrapIdx = -1;
+}
+
+<link rel="stylesheet" href="~/css/reqQuote.css">
+
+<div class="container-fluid">
+    <div class="" id="topDiv">
+        <div class="btn btn-primary" style="width: 100%;" id="selectedServBtn">
+            View Selected Services and Proceed &nbsp;
+            <i class="fas fa-caret-down"></i><span class="badge badge-warning badge-pill"></span>
+        </div>
+    </div>
+
+    <div>
+        <h4>Select services which you are interested in:</h4>
+    </div>
+
+    <div class="row" id="openingDiv">
+        <div class="col-md-10">
+            <form asp-controller="ReqQuotation" asp-action="Index" method="post" id="submitForm">
+                @Html.AntiForgeryToken()
+                @Html.Hidden("tempChkBoxId", 0)
+                @foreach (var category in Model.ServiceCategories)
+                {
+                    subCatWrapIdx++;
+                    <div class="catWrapper">
+                        <div class="catTitleWrapper d-flex">
+                            <div>
+                                @category.Name
+                            </div>
+                            <div class="ml-auto mr-2" style="border:solid 1px;  border-radius: 5px;">
+                                <a href="#subCatWrap-@subCatWrapIdx" data-toggle="collapse" style="padding: 5px;" class="collapseSign">
+                                    <i class="fas fa-minus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="subCatWrapper collapse trans_500 show" id="subCatWrap-@subCatWrapIdx">
+                            @while (idx < catLength && subCat[idx].CatID == category.ID)
+                            {
+                                <div class="card">
+                                    <div class="row">
+                                        <div class="col-md-3 subCatImgWrapper">
+                                            <div class="subCatImg" style="background-image: url('/images/@subCat[idx].ImgFilename')"></div>
+                                        </div>
+                                        <div class="card-block col-md-7">
+                                            <div style="padding: 10px;">
+                                                <div class="card-title">@subCat[idx].Title</div>
+                                                <div class="card-text">@subCat[idx].Description</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 subCatSelectWrapper1">
+                                            <div class="subCatSelectWrapper">
+                                                <label>
+                                                    <input type="checkbox" name="subCatSelect" id="subCatSelect-@subCat[idx].ID" value="@subCat[idx].ID" class="subCatSelect" />
+                                                    <span class="customChkBox customChkBoxBorder"></span>
+                                                    GET FREE QUOTES NOW!
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                idx++;
+                            }
+                        </div>
+                    </div>
+                }
+            </form>
+        </div>
+
+        <div class="col-2" id="selectedServicesSec">
+            <div id="selectedServicesWrapper" class="card">
+                <div id="selectedServicesTitle">Selected Services:</div>
+                <div id="selectedServicesGrp">
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn btn-outline-danger myBtnOutline" id="submitBtn" hidden>PROCEED TO FORM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section scripts{
+    <script src="~/js/reqQuote.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var subCatSelect = $(".subCatSelect");
+            var itemId = 0;
+            var subCatList = @Json.Serialize(Model.Services);
+            var subCatListItem;
+            var servItemId;
+            var selectedServicesGrp = $("#selectedServicesGrp");
+            var submitBtn = $("#submitBtn");
+            var selectedServBtnBadgePill = $("#selectedServBtn .badge-pill");
+
+            subCatSelect.change(function () {
+                //get checkbox value
+                itemId = $(this).val();
+
+                //check if checkbox is checked. Then find the matched item in subCatList.
+                //Then append to selectedServicesGrp. Also disable the checkbox if matched.
+                if ($(this).is(':checked')) {
+                    for (var idx = 0; subCatList.length; idx++) {
+                        if (subCatList[idx].id == itemId) {
+                            subCatListItem = subCatList[idx];
+                            $(this).attr("disabled", true);
+                            break;
+                        }
+                    }
+                    $("#selectedServicesGrp").append('<div class="yourService row">' +
+                        '<div class="col-10">' + subCatListItem.title + '</div>' +
+                        '<div class="col-2"><a href="#" data-itemId="' + itemId + '"><i class="fa fa-times"></i></a></div>' +
+                        '</div>');
+                    $(this).siblings(".customChkBox").removeClass("customChkBoxBorder");
+                    updateSelectedServBtnBadgePill();
+                    decideSubmitBtn();
+                }
+            });
+
+            //when 'future' servItem class element is clicked.
+            $("#selectedServicesGrp").on("click", ".yourService a", function (e) {
+                e.preventDefault();
+                servItemId = $(this).attr("data-itemId");
+
+                //remove disabled and uncheck checkbox
+                $("#subCatSelect-" + servItemId).removeAttr("disabled").prop('checked', false);
+                $("#subCatSelect-" + servItemId + " " + "+.customChkBox").addClass("customChkBoxBorder");
+                //remove grandparent element entirely
+                $(this).parent().parent().remove();
+                updateSelectedServBtnBadgePill();
+                decideSubmitBtn();
+            });
+
+            //submit form. Remove disabled to send the checkbox values.
+            $("#submitBtn").click(function () {
+                subCatSelect.removeAttr("disabled");
+                $("#submitForm").submit();
+            })
+
+            //$(".addItem").click(function (e) {
+            //    e.preventDefault();
+            //    itemId = $(this).attr("data-itemId");
+            //    for (var idx = 0; subCatList.length; idx++) {
+            //        if (subCatList[idx].id == itemId) {
+            //            subCatListItem = subCatList[idx];
+            //            $(this).hide();
+            //            break;
+            //        }
+            //    }
+            //    $("#selectedServicesGrp").append('<div class="yourService row">' +
+            //        '<div class="col-10">' + subCatListItem.title + '</div>' +
+            //        '<div class="col-2"><a href=""><i class="fa fa-times"></i></a></div>' +
+            //        '</div>');
+            //});
+
+
+            /*========= functions ====================*/
+            function decideSubmitBtn() {
+                if (selectedServicesGrp.children().length > 0) {
+                    submitBtn.removeAttr("hidden");
+                } else {
+                    submitBtn.attr("hidden", true);
+                }
+            }
+
+            function updateSelectedServBtnBadgePill() {
+                selectedServBtnBadgePill.html(selectedServicesGrp.children().length);
+            }
+        });
+
+    </script>
+}

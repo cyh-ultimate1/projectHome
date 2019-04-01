@@ -1,0 +1,59 @@
+@using Microsoft.AspNetCore.Identity
+@using mor1.Models.IdentityEntities
+
+@inject SignInManager<CustomUser> SignInManager
+@inject UserManager<CustomUser> UserManager
+
+
+<style>
+    .helloUser{
+        font-size: 14px;
+        font-weight: normal;
+        background-color: dodgerblue;
+        color: white;
+        padding: 3px;
+        border-radius: 5px;
+        margin-right: 5px;
+    }
+    .helloUser:hover{
+        color: dodgerblue;
+        background-color: white;
+        text-decoration: none;
+        border: solid 1px dodgerblue;
+        font-weight: bold;
+    }
+
+    .logOffBtn {
+        font-size: 14px;
+        padding: 3px;
+        color: black;
+        margin-right:5px;
+    }
+</style>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <button asp-controller="Admin" asp-action="AdminDashboard" class="btn navbar-btn navbar-link logOffBtn">Admin Dashboard</button>
+            </li>
+            <li>
+                <a asp-controller="Manage" asp-action="UserAccountDetails" title="Manage" class="btn helloUser">Hello @UserManager.GetUserName(User)!</a>
+            </li>
+            <li>
+                @*<button type="submit" class="btn btn-link navbar-btn navbar-link logOffBtn">Log off</button>*@
+                <button type="submit" class="btn navbar-btn navbar-link logOffBtn">Log off</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    @*<ul class="nav navbar-nav navbar-right">*@
+    @*<li class="nav-item withBtn"><a asp-controller="Account" asp-action="Login" class="nav-link" id="loginClick">Log in</a></li>*@
+    <li class="nav-item withBtn"><a asp-controller="Account" asp-action="LoginRegister" class="nav-link" id="loginClick">Log in / Sign Up</a></li>
+    @*<li class="nav-item withBtn"><a asp-controller="Account" asp-action="LoginRegister" class="nav-link">Sign Up</a></li>*@
+    @*</ul>*@
+}
+

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Identity package that uses Dapper with MySQL instead EntityFramework for use with .NET Core.</Description>
+    <AssemblyTitle>Identity.Dapper.MySQL</AssemblyTitle>
+    <Authors>grandchamp</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Identity.Dapper.MySQL</AssemblyName>
+    <PackageId>Identity.Dapper.MySQL</PackageId>
+    <PackageTags>asp.net;core;dapper;identity;mysql</PackageTags>
+    <PackageProjectUrl>https://github.com/grandchamp/Identity.Dapper</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/grandchamp/Identity.Dapper.git</RepositoryUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>0.9.2-alpha</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://github.com/grandchamp/Identity.Dapper/blob/master/LICENSE</PackageLicenseUrl>
+    <AssemblyVersion>0.9.2.0</AssemblyVersion>
+    <FileVersion>0.9.2.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="0.42.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Identity.Dapper\Identity.Dapper.csproj" />
+  </ItemGroup>
+
+</Project>
