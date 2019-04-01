@@ -25,7 +25,7 @@
     <div class="swiper-wrapper">
 
         <!--load video if weekend-->
-        @if (DateTime.Now.DayOfWeek == DayOfWeek.Monday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+        @if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday || DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
         {
             <div class="swiper-slide slider-bg-position" style="background-color: black;" data-hash="slide1">
                 <!-- add muted if Chrome/Safari can't play -->

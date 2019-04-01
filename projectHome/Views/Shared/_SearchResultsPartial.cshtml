@@ -75,53 +75,6 @@
         </table>
     </div>
 
-    @*<div>
-        @foreach (var comp in Model)
-        {
-            <a asp-controller="Company" asp-action="GetIndividualCompany" asp-route-id="@comp.ID" class="compHref">
-                <div class="card trans_300">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-2" style="background-color: greenyellow;">
-                                <div class="compLogo" style="background-image: url('/images/@comp.CompanyLogoFilename')"></div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="compName">@comp.CompanyName</div>
-                                <div><i class="fas fa-map-marker-alt"></i>&nbsp; @comp.Address</div>
-                                <div><i class="fas fa-envelope-square"></i>&nbsp; @comp.Email</div>
-                                <div><i class="fas fa-phone"></i>&nbsp; @comp.PhoneNum</div>
-                                <div>@comp.CompanyRegNum</div>
-                                <div>
-                                    Click to read more.....
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div><strong></strong></div><div>
-                                    <ul class="servList">
-                                        @foreach (var serv in comp.CompServList)
-                                        {
-                                            <li>@serv.Title</li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-2" style="height: inherit;">
-                                <div class="" style="top: 50%; position: relative; transform: translateY(-50%); text-align: center;">
-                                    <div>
-                                        <strong>Rating</strong>
-                                    </div>
-                                    <div class="compRating" style="margin: 0 auto;">
-                                        8.8/10.0
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-        }
-    </div>*@
 }
 
 
