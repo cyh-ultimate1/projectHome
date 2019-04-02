@@ -3,9 +3,10 @@
     ViewData["Title"] = "AddHomeSlides";
 }
 
-<h2>Add new slider photo.</h2>
+
 
 <div class="container">
+    <h2>Add new slider photo.</h2>
     <form asp-controller="Admin" asp-action="AddHomeSlides" method="post" enctype="multipart/form-data" id="myForm">
         <div class="form-group">
             <label class="col-md-12 control-label">Please Upload Your File</label>
@@ -14,9 +15,6 @@
                 <span class="text-danger"></span>
             </div>
         </div>
-        @*<div class="form-group">
-            <label class="col-md-12 control-label">Use this as home slider</label>
-        </div>*@
         <div class="form-group">
             <input type="submit" class="btn btn-danger" value="SUBMIT" />
         </div>
