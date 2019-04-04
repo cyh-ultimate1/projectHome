@@ -17,3 +17,5 @@ User side:
 
 Admin side:
 - Admin can insert and select to display homepage slides of their choice.
+
+More details in project_details.pdf
